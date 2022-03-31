@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ title }}{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h2>Lista de categorias</h2>
+    <hr>
+    <a href="" class="btn btn-success">
+     Nueva Categoria
+    </a>
+
+    <div class="row">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estado</th>
+                <th scope="col">accion</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for category in category_list %}
+              <tr>
+                <th scope="row">{{ category.id }}</th>
+                <td>{{category.name}}</td>
+                <td>
+                {% if category.active == 1 %} 
+                  <button type="button" class="btn btn-primary btn-sm">Activa</button>
+                {% else %}
+                <button type="button" class="btn btn-warning btn-sm">Desactivada</button>
+                {% endif %}
+                </td>
+                <td>--</td>
+              </tr>
+            {% endfor %}
+             
+            </tbody>
+      </table>
+    
+    </div>
+    
+   
+</div>
+{% endblock %}
